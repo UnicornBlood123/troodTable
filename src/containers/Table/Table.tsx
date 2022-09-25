@@ -33,21 +33,21 @@ const Table = (): ReactElement => {
     alert("Buy: " + id);
   }, []);
 
-  const onFilter = useCallback((type: string, select: string): void => {
-    setFilteredData(
-      dataRef.current.filter(
-        (element) =>
-          element?.[type as keyof ITableItem] === select ||
-          select === "all" ||
-          element?.[type as keyof ITableItem]
-            .toString()
-            .toLowerCase()
-            .includes(select)
-      )
-    );
-  }, []);
+  const onFilter = useCallback(
+    (type: keyof ITableItem, select: string): void => {
+      setFilteredData(
+        dataRef.current.filter(
+          (element) =>
+            element?.[type] === select ||
+            select === "all" ||
+            element?.[type].toString().toLowerCase().includes(select)
+        )
+      );
+    },
+    []
+  );
 
-  const onSort = useCallback((type: string): void => {
+  const onSort = useCallback((type: keyof ITableItem): void => {
     if (sortType.current === 2) {
       sortType.current = 0;
     } else {

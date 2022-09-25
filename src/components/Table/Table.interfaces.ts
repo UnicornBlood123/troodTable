@@ -3,9 +3,9 @@ import { RefObject } from "react";
 
 export interface ITable {
   items: ITableItem[];
-  onFilter: (type: string, select: string) => void;
+  onFilter: (type: keyof ITableItem, select: string) => void;
   filters: { status: string[] };
-  onSort: (type: string) => void;
+  onSort: (type: keyof ITableItem) => void;
   onBuy: (id: string | number) => void;
   loading: boolean;
   downNameArrowRef: RefObject<HTMLSpanElement>;

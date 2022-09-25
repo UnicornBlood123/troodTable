@@ -1,9 +1,10 @@
 import { RefObject } from "react";
+import { ITableItem } from "../TableItem/TableItem.interfaces";
 
 export interface ITableHeader {
-  onFilter: (type: string, select: string) => void;
+  onFilter: (type: keyof ITableItem, select: string) => void;
   filters: { status: string[] };
-  onSort: (type: string) => void;
+  onSort: (type: keyof ITableItem) => void;
   downNameArrowRef: RefObject<HTMLSpanElement>;
   upNameArrowRef: RefObject<HTMLSpanElement>;
   upVolumeArrowRef: RefObject<HTMLSpanElement>;

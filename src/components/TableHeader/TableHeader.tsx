@@ -4,10 +4,11 @@ import Selector from "../Selector/Selector";
 import { CaretDownFilled, CaretUpFilled } from "@ant-design/icons/lib";
 import SearchField from "../SearchField/SearchField";
 import { ITableHeader } from "./TableHeader.interfaces";
+import { ITableItem } from "../TableItem/TableItem.interfaces";
 
 const TableHeader = (props: ITableHeader): ReactElement => {
   const handleClick = (event: React.MouseEvent<HTMLDivElement>): void => {
-    props.onSort(event.currentTarget.dataset.type || "");
+    props.onSort(event.currentTarget.dataset.type as keyof ITableItem);
   };
 
   return (
